@@ -1,4 +1,4 @@
-from game.hilo import hilo
+from game.hilo import Hilo
 import random
 
 
@@ -20,67 +20,61 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.hilo = []
+        self.guesser = hilo()
         self.is_playing = True
-        self.score = 0
-        self.total_score = 0
+        self.total = 300
+        self.first_card = None
+        self.guess = None
+        self.last_card = None
+        
 
-        for i in range():
-            card = random.choice([1,2,3,4,5,6,7,8,9,10,11,12,13])  # constructor
-            self.score.append(self.score)
+    def random_card(self, exclusions=[]):
+        """Displays the first card. Also asks the player for their guess.""" 
+        choices = []
+        for i in range(1,14):
+            if i not in exclusions:
+                choices.append(i)
+        return random.choice(choices)
+        """Args:
+            self (Director): An instance of Director.
+        """
 
-    #def start_game(self):
+    def is_playing(self):
         """Starts the game by running the main game loop.
         
         Args:
             self (Director): an instance of Director.
         """
-        #while self.is_playing:
-        #    self.get_inputs()
-        #    self.do_updates()
-        #    self.do_outputs()
-
-    #def is_playing(self):
+   
         """Ask the user if they want to roll.
 
         Args:
             self (Director): An instance of Director.
         """
-    #    is_play = input("play Hilo? [y/n] ")
-    #    self.is_playing = (random_card == "y")
-       
-    #def do_updates(self):
-        """Updates the player's score.
+        play = input("Play Hilo? [y/n] ")
+        self.is_playing = (play == "y")
+        while self.is_playing:
+            self.first_card = self.random_card()
+            self.guess = self.guesser.guess(self.first_card)
+            self.last_card = self.random_card([self.first_card])
+            self.score()
+            self.end_game()
 
-        Args:
-            self (Director): An instance of Director.
-        """
-    #    if not self.is_playing:
-    #        return 
+    def score(self):    
+        # Updates the player's score.
+        if self.first_card > self.last_card and self.guess == 'lower':
+            self.total += 100
+            print("You guessed correct! You get 100 points.")
+        elif self.first_card < self.last_card and self.guess == 'higher':
+            self.total += 100
+            print("You guessed correct! You get 100 points.")
+        else:
+            self.total -= 75
+            print("You are incorrect... You lose 75 points.")
 
-    #    for i in range(len(self.dice)):
-    #        die = self.dice[i]
-    #        die.roll()
-    #        self.score += die.points 
-    #    self.total_score += self.score
-        #you have to reset the self.score otherwise it will add in all the previous rolls too.  
-        # this is why the total wasn't working properly at first
-    #    self.score = 0
-
-    #def do_outputs(self):
-        """Displays the dice and the score. Also asks the player if they want to roll again. 
-
-        Args:
-            self (Director): An instance of Director.
-        """
-    #    if not self.is_playing:
-    #        return
-        
-    #    values = ""
-    #    for i in range(len(self.dice)):
-    #        die = self.dice[i]
-    #        values += f"{die.value} "
-
-    #    print(f"You rolled: {values}")
-    #    print(f"Your score is: {self.total_score}\n")
-    #    self.is_playing == (self.score > 0)
+    def end_game(self):
+        if self.score <= 0:
+            self.is_playing = False 
+            print("Your points are at 0.... sorry, GAME OVER!")
+    
+    
