@@ -6,29 +6,22 @@ import random
 
 class Hilo:
 # 2) Create the class constructor. Use the following method comment.
-    #Constructs a new instance of Die with a value and points attribute.
-    def __init__(self):#Args:self (Die): An instance of Die.            
+    #Constructs a new instance of cards with a value and points attribute between 1-13.
+    def __init__(self):#Args:self (hilo): An instance of hilo.            
     #Attributes:
     
-        #points (int): The number of points the die is worth.
-        #self.points = 0
-        #value (int): The number of spots on the side facing up. int==1<=6
-        #self.value = -1
+        self.first_card = None
+
+
 
  
     
-# 3) Create the roll(self) method. Use the following method comment.
-    #Generates a new random value and calculates the points.
-    #def guess(self):
-    # The responsibility of rolling the die is to keep track the 5 random numbers between 1 and 6 and calculate the points for  
-    #each roll. 
-        #self.value = random.choice([1,2,3,4,5,6])
-        #1 = 100 points
-        #if self.value == 1:
-        #    self.points = 100
-        #5 = 50 points
-        #elif self.value == 5:
-        #    self.points = 50
-        #else:
-        #NO 5 or 1 rolled = game_over (0 points)
-        #    self.points = 0
+# 3) Create the (self) method. Use the following method comment.
+    #imports a new random card and then asks the player if they guess "high" or "low"
+def guess(self):
+    # The responsibility of the guesser is to determine if the last_card is higher or lower and input that data 
+        self.random_card = self.first_card  
+        guesser=input("Do you guess the last card to be higher or lower? h/l")
+        self.random_card = self.last_card
+        return 
+       

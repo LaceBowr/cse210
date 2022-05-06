@@ -1,4 +1,4 @@
-from game.hilodirector import Director
+import Director
 
-director = Director()
+hilodirector = Director()
 director.is_playing()

@@ -40,5 +40,5 @@ root                    (project root folder)
 ## Authors
 ---
 Laycie Bowers (bow21015@byui.edu)
-Shane Fowles  (fow21010@byui.edu
+Shane Fowles  (fow21010@byui.edu)
 )

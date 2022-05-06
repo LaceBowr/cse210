@@ -1,4 +1,4 @@
-from game.hilo import Hilo
+from hilo import hilodirector
 import random
 
 
@@ -20,7 +20,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.guesser = hilo()
+        self.guesser = Hilo()
         self.is_playing = True
         self.total = 300
         self.first_card = None
