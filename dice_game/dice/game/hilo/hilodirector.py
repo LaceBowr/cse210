@@ -51,7 +51,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        play = input("Play Hilo? [y/n] ")
+        play = input("Would You Like To Play Hilo? [y/n] ")
         self.is_playing = (play == "y")
         while self.is_playing:
             self.first_card = self.random_card()
