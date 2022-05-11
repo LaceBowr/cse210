@@ -41,4 +41,5 @@ root                    (project root folder)
 ---
 Laycie Bowers (bow21015@byui.edu)
 Shane Fowles  (fow21010@byui.edu)
+Irvin Silva   (irvinjose.silva@gmail.com)
 )
