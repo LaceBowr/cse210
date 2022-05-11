@@ -1,4 +1,4 @@
-from hilo import hilodirector
+from hilo import Hilo
 import random
 
 
@@ -23,9 +23,9 @@ class Director:
         self.guesser = Hilo()
         self.is_playing = True
         self.total = 300
-        self.first_card = None
-        self.guess = None
-        self.last_card = None
+        self.first_card = 0
+        self.guess = 0
+        self.last_card = 0
         
 
     def random_card(self, exclusions=[]):
@@ -39,19 +39,23 @@ class Director:
             self (Director): An instance of Director.
         """
 
-    def is_playing(self):
+    def start_game(self):
         """Starts the game by running the main game loop.
-        
-        Args:
-            self (Director): an instance of Director.
+        Args:self (Director): an instance of Director.
         """
    
-        """Ask the user if they want to roll.
+        """Ask the user if they want to play hi/lo?.
 
         Args:
             self (Director): An instance of Director.
         """
+        print("A card from 1 to 13 will appear and you guess if the next card will be higher or lower.\n" 
+        "You begin with 300 points.\n"
+        "If your Hilo prediction is correct you  add 100 points to your score.\n"
+        "If your Hilo prediciton is incorrect you subtract 75 points from your\n" 
+        "score." )
         play = input("Play Hilo? [y/n] ")
+        
         self.is_playing = (play == "y")
         while self.is_playing:
             self.first_card = self.random_card()
@@ -62,19 +66,23 @@ class Director:
 
     def score(self):    
         # Updates the player's score.
-        if self.first_card > self.last_card and self.guess == 'lower':
+        if self.first_card > self.last_card and self.guess == 'l':
             self.total += 100
-            print("You guessed correct! You get 100 points.")
-        elif self.first_card < self.last_card and self.guess == 'higher':
+            print(f"You guessed correct (second card was {self.last_card})! You get 100 points.")
+        elif self.first_card < self.last_card and self.guess == 'h':
             self.total += 100
-            print("You guessed correct! You get 100 points.")
+            print(f"You guessed correct (second card was {self.last_card})! You get 100 points.")
         else:
             self.total -= 75
-            print("You are incorrect... You lose 75 points.")
+            print(f"You are incorrect (second card was {self.last_card}). You lose 75 points.")
+            self.is_playing = input(f"play Hilo? y/n (Your score is: {self.total})")
+        if self.is_playing == "n":
+                exit()
 
     def end_game(self):
-        if self.score <= 0:
+        if self.total <= 0:
             self.is_playing = False 
             print("Your points are at 0.... sorry, GAME OVER!")
-    
+
+        
     
