@@ -1,4 +1,5 @@
 import random
+print("hello world)
 
 class Hilo:
     
