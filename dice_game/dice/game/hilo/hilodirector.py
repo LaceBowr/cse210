@@ -49,13 +49,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        #print("A card from 1 to 13 will appear and you guess if the next card will be higher or lower.\n" 
-        #"You begin with 300 points.\n"
-        #"If your Hilo prediction is correct you  add 100 points to your score.\n"
-        #"If your Hilo prediciton is incorrect you subtract 75 points from your\n" 
-        #"score." )
-        play = input("Play Hilo? [y/n] ")
-        
+
         self.is_playing = (play == "y")
         while self.is_playing:
             self.first_card = self.random_card()
@@ -84,5 +78,3 @@ class Director:
             self.is_playing = False 
             print("Your points are at 0.... sorry, GAME OVER!")
 
-        
-    
