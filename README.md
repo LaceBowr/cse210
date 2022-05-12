@@ -1,5 +1,3 @@
-# cse210
-Section10Class
 # Hilo
 Are you willing to risk 300 points? Play Hilo and you might be surprised. The rules are simple. 
 A card from 1 to 13 will appear and you guess if the next card will be higher or lower. 
