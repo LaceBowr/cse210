@@ -4,8 +4,7 @@ class Hilo:
     
 # 2) Create the class constructor. Use the following method comment.
     #Constructs a new instance of cards with a value and points attribute between 1-13.
-    def __init__(self):
-        #Args:self (hilo): An instance of hilo.            
+    def __init__(self):#Args:self (hilo): An instance of hilo.            
     
     #Attributes:
         self.first_card = None
@@ -20,3 +19,4 @@ class Hilo:
             self.first_card = first_card 
             self.card_guess = input(f" The first card is {self.first_card}. Do you guess the next card to be higher or lower? (h/l): ") 
             return self.card_guess
+       
