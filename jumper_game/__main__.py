@@ -1,4 +1,3 @@
-
 from jumperdirector import Director
 
 jumperdirector = Director()
