@@ -1,3 +1,4 @@
+
 from input_administrator import InputAdministrator
 from guesser import Guesser
 from equipment import Equipment
@@ -27,12 +28,16 @@ class Director:
         self._equipment = Equipment()
 
     def check_for_winner(self):
-        # TODO
-        return False
+        if  self._guesser == True and self._input_administrator.get_word_with_placeholders != "_":
+            return True
+        else:
+            return False
 
     def check_for_loser(self):
-        # TODO
-        return False
+        if self._equipment.blast_parachute():
+            return False
+        else:
+            return True
 
     #How you get input and return the results to the screen:
     def start_game(self):
