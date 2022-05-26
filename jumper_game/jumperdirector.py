@@ -28,31 +28,25 @@ class Director:
         self._equipment = Equipment()
 
     def check_for_winner(self):
-        if  self._guesser == True and self._input_administrator.get_word_with_placeholders != "_":
+        if "_" not in self._guesser.get_word_with_placeholders():
             return True
         else:
             return False
 
     def check_for_loser(self):
-        if self._equipment.blast_parachute():
-            return False
-        else:
+        if not self._equipment.parachute_is_safe():
             return True
+        else:
+            return False
 
     #How you get input and return the results to the screen:
     def start_game(self):
         # initialize the random word at the start of the game
-        self._guesser.random_word()
+        self._guesser.get_random_word()
         self._input_administrator.text_results("Okay, In jumper you first guess a letter in a word,\n" 
         "if your guess is RIGHT, it is printed in the spaces of the word below the jumper.\n"
         "if your guess is WRONG, one of the strings are cut from your jumpers parachute. OH NO!\n")
         while True:
-            if self.check_for_winner() == True:
-                self._input_administrator.text_results("You Win!")
-                exit()
-            if self.check_for_loser() == True:
-                self._input_administrator.text_results("You Lose")
-                exit()
             player_move = self._input_administrator.text_for_input("Please guess a letter between a-z:")
             #Deletes or blasts away one of the strings on the jumpers parachute
             if self._guesser.check_guess(player_move) != True:
@@ -60,4 +54,10 @@ class Director:
                 self._equipment.blast_parachute()
             self._input_administrator.text_results(self._guesser.get_word_with_placeholders())
             self._input_administrator.display_jumper(self._equipment.get_jumper())
+            if self.check_for_loser() == True:
+                self._input_administrator.text_results("You Lose")
+                exit()
+            if self.check_for_winner() == True:
+                self._input_administrator.text_results("You Win!")
+                exit()
 

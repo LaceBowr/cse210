@@ -8,7 +8,6 @@ class InputAdministrator:
     """
     def __init__(self):
         pass
-        jumper = parachute + skydiver + self._word_with_placeholders
 
     def display_jumper(self, jumper):
         '''Takes the jumper array and displays it to the screen in the current state'''

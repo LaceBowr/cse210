@@ -1,40 +1,40 @@
-from guesser import Guesser
-
-
+#from guesser import Guesser
+# Equipment should not need to know about words or anything.
+parachute = "   _____ \n,  /_____\ \n  \     / \n   \   / "
+skydiver = "     0 \n    /|\ \n    / \ "
 class Equipment(object):
+
+    #The execution of actions or no-actions for the jumper 
     def __init__(self):
-        self.parachute="   _____ \n"+"  /_____\ \n"+"  \     / \n"+"   \   / "
-        self.skydiver="     0 \n"+"    /|\ \n"+"    / \ "
-        get_word=Guesser()
-        self._word=""
-        self._word=get_word.get_word_with_placeholders()
-        self.letters=get_word.get_random_word()
+        #get_word = Guesser()
+        self.parachute = '   _____  \n  /_____\ \n  \     / \n   \   / '
+        self.skydiver = "    0 \n    /|\ \n    / \ "
+        #self._word = ""
+        #self._word = get_word.get_word_with_placeholders()
+        #self.letters = get_word.get_random_word()
 
     def blast_parachute(self):
-        skydiver ="     0 \n"+"    /|\ \n"+"    / \ "
-        # removes a line from the jumper
-        # n=0
-        # while n != 5: 
-        if self._word not in self.letters:
-            parachute=self.parachute[10:]
-            return parachute+skydiver
-        # if n >= 4:
-            skydiver=skydiver.replace("     0 \n","     X \n")
-            print(skydiver)
-            print("gameover")
-        return parachute+skydiver
+        if len(self.parachute) > 11:
+            self.parachute=self.parachute[11:]
+        else:
+            self.parachute = ''
+        if not self.parachute:
+            self.skydiver = self.skydiver.replace("    0 \n","    X \n")
+        return self.parachute+self.skydiver
 
-    def parachute_is_safe(self,word):
+    def parachute_is_safe(self):
+        if len(self.parachute) > 0:
+            return True
+        return False
 
-        for letter in word:
-            if letter.lower() == True:
-                print(letter,end= " ")
-            else:
-                print("_",end=" ") 
-    
-    def get_word_with_spaces(self):
-        if Guesser == True:
-            print(self._word_with_placeholders + self.letters)
+    """def print_word_with_spaces(word):
+        guessed_words = []    
+        word_completion = '_' * len(word)
+        tries = 4
+        print(word_completion)
+        while tries > 5: 
+            if word_with_placeholder == player_move and """
 
     def get_jumper(self):
-        return self.parachute +"\n"+ self.skydiver
+        display_jumper = f'{self.parachute} \n {self.skydiver} \n' 
+        return display_jumper
