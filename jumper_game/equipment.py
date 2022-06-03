@@ -4,7 +4,8 @@ parachute = "   _____ \n,  /_____\ \n  \     / \n   \   / "
 skydiver = "     0 \n    /|\ \n    / \ "
 class Equipment(object):
 
-    #The execution of actions or no-actions for the jumper 
+ 
+    #The execution of actions or no-actions for the jumper
     def __init__(self):
         #get_word = Guesser()
         self.parachute = '   _____  \n  /_____\ \n  \     / \n   \   / '
@@ -27,6 +28,12 @@ class Equipment(object):
             return True
         return False
 
+
     def get_jumper(self):
         display_jumper = f'{self.parachute} \n {self.skydiver} \n' 
         return display_jumper
+ 
+    def get_jumper(self):
+        display_jumper = f'{self.parachute} \n {self.skydiver} \n'
+        return display_jumper
+

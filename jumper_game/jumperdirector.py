@@ -39,7 +39,7 @@ class Director:
         else:
             return False
 
-    #How you get input and return the results to the screen:
+   #How you get input and return the results to the screen:
     def start_game(self):
         # initialize the random word at the start of the game
         self._guesser.get_random_word()
@@ -59,5 +59,6 @@ class Director:
                 exit()
             if self.check_for_winner() == True:
                 self._input_administrator.text_results("You Win!")
-                exit()
+
+                exit()     
 
