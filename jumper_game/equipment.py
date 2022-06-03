@@ -27,14 +27,6 @@ class Equipment(object):
             return True
         return False
 
-    """def print_word_with_spaces(word):
-        guessed_words = []    
-        word_completion = '_' * len(word)
-        tries = 4
-        print(word_completion)
-        while tries > 5: 
-            if word_with_placeholder == player_move and """
-
     def get_jumper(self):
         display_jumper = f'{self.parachute} \n {self.skydiver} \n' 
         return display_jumper
