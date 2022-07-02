@@ -1,8 +1,8 @@
-#from hilo import Hilo
+from hilo import Hilo
 import random
 
 
-class Director:
+class HiloDirector:
     """A person who directs the game. 
     
     The responsibility of a Director is to control the sequence of play.
@@ -50,7 +50,7 @@ class Director:
             self (Director): An instance of Director.
         """
 
-        self.is_playing = (play == "y")
+        self.is_playing = "y"
         while self.is_playing:
             self.first_card = self.random_card()
             self.guess = self.guesser.guess(self.first_card)

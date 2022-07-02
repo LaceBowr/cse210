@@ -1,8 +1,7 @@
-from keyboard_services import KeyboardService
 import pyray
-#from keyboard_services import keyboard_services
+import raylib
 
-class VideoService(KeyboardService): #(keyboard_services):
+class VideoService():
     '''Outputs the game onto the screen by using the keyboard_services input.'''
     def __init__(self):
         cellx, celly = self.cell_size()
@@ -21,12 +20,11 @@ class VideoService(KeyboardService): #(keyboard_services):
         '''
 
     def open_window(self):
-        pyray.init_window(self.width, self.height, f'Greed {self.score}')
-        pyray.set_target_fps(15)
+        pyray.init_window(self.width, self.height, 'Greed')
+        pyray.set_target_fps(20)
         pyray.clear_background(pyray.BLACK)
         pyray.begin_drawing()
-
-        
+  
     def get_width(self):
         #Gets video screen width for the session of the game
         #if cell_size(dx,dy):
@@ -46,11 +44,19 @@ class VideoService(KeyboardService): #(keyboard_services):
     def draw_grid(self, symbols):
     #Draws out the overall cell window, the symbols, the colors and 
     # the falling movements to the screen
+        pyray.clear_background(pyray.BLACK)
+        pyray.begin_drawing()
         cellx, celly = self.cell_size()
         for symbol in symbols.symbols:
-            pyray.draw_text(symbol.text, symbol.x*cellx, symbol.y*celly, cellx-2, symbol.color)
+            pyray.draw_text(symbol.text, symbol.x*cellx, symbol.y*celly, cellx-2, symbol.get_display_color())
+        pyray.draw_text(f'Score: {self.score}', 20, 100, 16, pyray.WHITE)
         pyray.end_drawing()
-        
+
+    def game_running(self):
+        if raylib.WindowShouldClose() or self.score < 0:
+            return False
+        return True
+
     def player_hit_results(self, player, symbol, red, white):
         if (player.x,player.y) == (symbol.x,symbol.y):
             if symbol.stars:
@@ -59,18 +65,18 @@ class VideoService(KeyboardService): #(keyboard_services):
                 return True
         return False
 
-    def _set_position(self, position):
-        self._set_position = position
-    
-    def _set_score(self, score):
-        print(f'Score:{score}')
-        
-    
-    
     def character_move(self):
         #sets gems/rocks and the player's hit/move_at_end_position to the screen
         (self.dx,self.dy)
         return self.dx, self.dy
-        
+
+    def set_score(self,score):
+        self.score = score
+        #print(f'SCORE:{score}') 
+        #pyray.begin_drawing()
+        #pyray.set_target_fps(10)
+        #pyray.draw_text(f'Score: {score}',20,100,16,pyray.WHITE)
+        #pyray.end_drawing
+
     def close_window(self):
         pyray.close_window()
